@@ -1,10 +1,7 @@
-import { Suspense } from "react";
+export const dynamic = "force-dynamic";
+
 import Login from "./Login";
 
 export default function Page() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Login />
-    </Suspense>
-  );
+  return <Login />;
 }
