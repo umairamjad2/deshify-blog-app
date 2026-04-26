@@ -12,6 +12,70 @@
     gap: 40px;
     height: auto;
     overflow: visible;
+    padding: 20px 0;
+  }
+
+  .left, .right {
+    height: auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    gap: 30px;
+    padding: 20px 10px; /* Add horizontal padding for mobile */
+  }
+
+  .title {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .post {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .post:hover {
+    transform: none; /* Disable horizontal slide on mobile hover */
+  }
+
+  .imgContainer {
+    width: 100px;
+    height: 65px;
+    border-radius: 8px;
+  }
+
+  .postTitle {
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .delete {
+    padding: 6px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .formTitle {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .formSubtitle {
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .input, .textArea {
+    padding: 12px;
+    font-size: 14px;
   }
 }
 
@@ -52,18 +116,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 12px;
   background: var(--card-bg);
   border: 1.5px solid var(--border);
   padding: 15px;
   border-radius: 20px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden; /* Prevent child overflow */
 }
 
 .post:hover {
   background: var(--bg-soft);
   border-color: var(--primary);
-  transform: translateX(10px);
+  transform: translateX(5px);
   box-shadow: 0 10px 30px -10px rgba(83, 194, 139, 0.2);
 }
 
@@ -71,8 +136,9 @@
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
   cursor: pointer;
+  min-width: 0; /* Allow title truncation to work */
 }
 
 .imgContainer {
@@ -94,6 +160,11 @@
   margin: 0;
   color: inherit;
   transition: color 0.3s ease;
+  /* Truncate long titles to prevent layout break */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .postClickArea:hover .postTitle {
@@ -111,6 +182,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .delete:hover {

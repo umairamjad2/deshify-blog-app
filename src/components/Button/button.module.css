@@ -1,5 +1,5 @@
 .container {
-  padding: 16px 32px;
+  padding: 14px 32px;
   cursor: pointer;
   background: #53c28b;
   border: none;
@@ -7,19 +7,29 @@
   width: max-content;
   color: #000;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
+  letter-spacing: 0.2px;
 }
 
 .container:hover {
   background: #48a878;
   transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(83, 194, 139, 0.3);
+  box-shadow: 0 10px 24px -4px rgba(83, 194, 139, 0.35);
 }
 
 .container:active {
   transform: translateY(0);
+  box-shadow: none;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: fit-content;
+    padding: 12px 24px;
+    font-size: 14px;
+  }
 }

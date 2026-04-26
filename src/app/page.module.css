@@ -1,81 +1,263 @@
+/* ─── Hero Section ───────────────────────────────────────────── */
 .container {
   display: flex;
   align-items: center;
-  gap: 100px;
-  min-height: calc(100vh - 100px);
+  justify-content: space-between;
+  gap: 60px;
+  min-height: calc(100vh - 120px);
+  padding: 60px 0;
 }
 
+/* ─── Left Content Column ────────────────────────────────────── */
 .item {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 32px;
+  max-width: 580px;
 }
 
+/* ─── Badge ──────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(83, 194, 139, 0.1);
+  border: 1px solid rgba(83, 194, 139, 0.25);
+  border-radius: 100px;
+  color: #53c28b;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  width: fit-content;
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #53c28b;
+  animation: pulse 2s infinite;
+}
+
+/* ─── Title ──────────────────────────────────────────────────── */
 .title {
-  font-size: 56px;
-  font-weight: 800;
-  line-height: 1.2;
-  background: linear-gradient(135deg, #53c28b 0%, #3a8d65 100%);
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0;
+  color: inherit;
+}
+
+.titleGradient {
+  background: linear-gradient(135deg, #53c28b 0%, #3ecf8e 50%, #3a8d65 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin: 0;
-  letter-spacing: -1px;
+  background-clip: text;
 }
 
+/* ─── Description ────────────────────────────────────────────── */
 .desc {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 400;
-  color: #888;
-  line-height: 1.8;
-  max-width: 500px;
+  color: var(--text-soft);
+  line-height: 1.85;
+  max-width: 480px;
+}
+
+/* ─── Stats Row ──────────────────────────────────────────────── */
+.stats {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statNumber {
+  font-size: 24px;
+  font-weight: 800;
+  color: #53c28b;
+  letter-spacing: -0.5px;
+}
+
+.statLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* ─── Actions ────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ─── Right Image Column ─────────────────────────────────────── */
+.imageItem {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 540px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Glowing background blob */
+.imageWrapper::before {
+  content: "";
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(83, 194, 139, 0.15) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  z-index: 0;
+  animation: glow 6s ease-in-out infinite alternate;
 }
 
 .img {
   width: 100%;
   height: auto;
   object-fit: contain;
-  animation: float 4s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+  animation: float 5s ease-in-out infinite;
+  filter: drop-shadow(0 20px 40px rgba(83, 194, 139, 0.15));
 }
 
+/* ─── Decorative floating cards ──────────────────────────────── */
+.floatCard {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e0e0e0;
+  white-space: nowrap;
+  z-index: 2;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+:global(.light) .floatCard {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #111;
+}
+
+.floatCard1 {
+  top: 10%;
+  left: -10%;
+  animation: floatCard1 4s ease-in-out infinite;
+}
+
+.floatCard2 {
+  bottom: 12%;
+  right: -8%;
+  animation: floatCard2 4.5s ease-in-out infinite;
+}
+
+/* ─── Animations ─────────────────────────────────────────────── */
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
 }
 
-.actions {
-  display: flex;
-  gap: 20px;
+@keyframes floatCard1 {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50%       { transform: translateY(-10px) rotate(-2deg); }
 }
 
-:global(.light) .desc {
-  color: #555;
+@keyframes floatCard2 {
+  0%, 100% { transform: translateY(0px) rotate(2deg); }
+  50%       { transform: translateY(10px) rotate(2deg); }
 }
 
+@keyframes glow {
+  from { opacity: 0.6; transform: scale(0.95); }
+  to   { opacity: 1;   transform: scale(1.05); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.5); }
+}
+
+/* ─── Light mode overrides ───────────────────────────────────── */
+:global(.light) .badge {
+  background: rgba(83, 194, 139, 0.08);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+
+/* Tablet */
 @media screen and (max-width: 1024px) {
   .container {
-    flex-direction: column;
-    text-align: center;
-    gap: 50px;
-    padding: 60px 0;
-  }
-  
-  .item {
-    align-items: center;
+    gap: 40px;
+    padding: 40px 0;
   }
 
   .title {
-    font-size: 48px;
+    font-size: clamp(36px, 5vw, 56px);
   }
-  
+}
+
+/* Mobile — hide image, stack layout */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 36px;
+    min-height: unset;
+    padding: 40px 0 60px;
+  }
+
+  .item {
+    max-width: 100%;
+    gap: 24px;
+  }
+
+  .title {
+    font-size: clamp(28px, 8vw, 42px);
+    letter-spacing: -1.2px;
+  }
+
   .desc {
-    font-size: 18px;
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .stats {
+    gap: 24px;
   }
 
   .actions {
-    flex-direction: column;
-    width: 100%;
-    max-width: 300px;
+    gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* Hide image on mobile */
+  .imageItem {
+    display: none;
   }
 }

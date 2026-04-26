@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 100px);
-  padding: 20px;
+  padding: 24px 0;
 }
 
 .wrapper {
@@ -178,4 +178,34 @@
 .link:hover {
   color: var(--primary-dark);
   text-decoration: underline;
+}
+
+/* ─── Responsive ──────────────────────────────────── */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 28px 20px;
+    border-radius: 18px;
+    gap: 18px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .input {
+    padding: 13px 14px;
+    font-size: 15px;
+  }
+
+  .button {
+    padding: 13px;
+    font-size: 15px;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 4px;
+  }
 }
