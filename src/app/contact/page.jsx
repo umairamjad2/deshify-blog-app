@@ -1,13 +1,7 @@
+"use client";
 import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
-import Button from "@/components/Button/Button";
-
-export const metadata = {
-  title: "Contact Us – Deshify",
-  description:
-    "Reach out to Deshify for inquiries, support, or partnership opportunities. Our team is here to connect and assist you.",
-};
 
 const Contact = () => {
   return (
@@ -17,22 +11,32 @@ const Contact = () => {
         <div className={styles.imgContainer}>
           <Image
             src="/contact.png"
-            alt=""
+            alt="Contact us"
             fill={true}
             className={styles.image}
           />
         </div>
-        <form className={styles.form}>
-          <input type="text" placeholder="name" className={styles.input} />
-          <input type="text" placeholder="email" className={styles.input} />
-          <textarea
-            className={styles.textArea}
-            placeholder="message"
-            cols="30"
-            rows="7"
-          ></textarea>
-          <Button url="#" text="Send" />
-        </form>
+        <div className={styles.formContainer}>
+          <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+            <div className={styles.inputGroup}>
+              <input type="text" placeholder="Name" className={styles.input} required />
+            </div>
+            <div className={styles.inputGroup}>
+              <input type="email" placeholder="Email Address" className={styles.input} required />
+            </div>
+            <div className={styles.inputGroup}>
+              <textarea
+                className={styles.textArea}
+                placeholder="How can we help you?"
+                rows="6"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" className={styles.button}>
+              Send Message
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

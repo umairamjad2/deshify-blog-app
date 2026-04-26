@@ -34,11 +34,10 @@ const BlogPost = async ({ params }) => {
           <p className={styles.desc}>{data.desc}</p>
           <div className={styles.author}>
             <Image
-              src="https://images.pexels.com/photos/32859648/pexels-photo-32859648.jpeg"
-              // src={data.img}
-              alt=""
-              width={40}
-              height={40}
+              src="/noavatar.png"
+              alt="Author Avatar"
+              width={32}
+              height={32}
               className={styles.avatar}
             />
             <span className={styles.username}>{data.username}</span>
@@ -50,8 +49,7 @@ const BlogPost = async ({ params }) => {
           <Image
             src={data.img}
             alt="Post Image"
-            width={400}
-            height={250}
+            fill={true}
             className={styles.image}
           />
         </div>

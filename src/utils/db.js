@@ -15,7 +15,7 @@ import mongoose from "mongoose";
 const connect = async () => {
   try {
     if (mongoose.connections[0].readyState) return; // avoid multiple connections
-    await mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log("MongoDB Connected!");
   } catch (error) {
     console.error("MongoDB Connection Failed!", error);

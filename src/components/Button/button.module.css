@@ -1,9 +1,25 @@
 .container {
-      padding: 20px;
-      cursor: pointer;
-      background-color: #53c28b;
-      border: none;
-      color: black;
-      border-radius: 5px;
-      width: max-content;
+  padding: 16px 32px;
+  cursor: pointer;
+  background: #53c28b;
+  border: none;
+  border-radius: 12px;
+  width: max-content;
+  color: #000;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container:hover {
+  background: #48a878;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(83, 194, 139, 0.3);
+}
+
+.container:active {
+  transform: translateY(0);
 }

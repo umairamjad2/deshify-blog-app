@@ -1,24 +1,48 @@
 .container {
-      width: 42px;
-      height: 24px;
-      border: 1.5px solid #53c28b70;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 2px;
-      position: relative;
-      cursor: pointer;
+  width: 58px;
+  height: 30px;
+  border: 1.5px solid var(--primary);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  position: relative;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+:global(.light) .container {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .icon {
-      font-size: 12px;
+  width: 14px;
+  height: 14px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f1c40f; /* Sun color */
+}
+
+.iconMoon {
+  color: #bdc3c7; /* Moon color */
 }
 
 .ball {
-      width: 15px;
-      height: 15px;
-      background-color: #53c28b;
-      border-radius: 50%;
-      position: absolute;
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg, #53c28b 0%, #3a8d65 100%);
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 2px 8px rgba(83, 194, 139, 0.4);
+}
+
+.container:active .ball {
+  transform: scale(0.9);
 }

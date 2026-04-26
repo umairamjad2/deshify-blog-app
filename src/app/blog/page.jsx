@@ -19,23 +19,36 @@ const Blog = async () => {
   const data = await getData();
   return (
     <div className={styles.mainContainer}>
-      {data.map((item) => (
-        <Link href={`/blog/${item._id}`} className={styles.container} key={item._id}>
-          <div className={styles.imgContainer}>
-            <Image
-              className={styles.img}
-              width={400}
-              height={250}
-              src={item.img}
-              alt=""
-            />
+      <h1 className={styles.pageTitle}>Latest Stories</h1>
+      <div className={styles.posts}>
+        {data.length > 0 ? (
+          data.map((item) => (
+            <Link href={`/blog/${item._id}`} className={styles.container} key={item._id}>
+              <div className={styles.imgContainer}>
+                <Image
+                  className={styles.img}
+                  width={300}
+                  height={180}
+                  src={item.img}
+                  alt={item.title}
+                />
+              </div>
+              <div className={styles.content}>
+                <h1 className={styles.title}>{item.title}</h1>
+                <p className={styles.desc}>{item.desc}</p>
+                <div className={styles.meta}>
+                  <span className={styles.readMore}>Read Story →</span>
+                </div>
+              </div>
+            </Link>
+          ))
+        ) : (
+          <div className={styles.emptyState}>
+            <h2>No stories found yet.</h2>
+            <p>Check back later for fresh inspiration!</p>
           </div>
-          <div className={styles.content}>
-            <h1 className={styles.title}>{item.title}</h1>
-            <p className={styles.desc}>{item.desc}</p>
-          </div>
-        </Link>
-      ))}
+        )}
+      </div>
     </div>
   );
 };

@@ -1,25 +1,111 @@
-.container{
-      height: 100px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+.container {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
 
+:global(.light) .container {
+  background: rgba(255, 255, 255, 0.8);
 }
-.logo{
-      font-weight: bold;
-      font-size: 22px;
+
+.logo {
+  font-weight: 800;
+  font-size: 24px;
+  text-decoration: none;
+  background: linear-gradient(135deg, #53c28b 0%, #3a8d65 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
 }
-.links{
-      display: flex;
-      align-items: center;
-      gap: 20px;
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
-.logout{
-      padding: 5px;
-      border: none;
-      background-color: #53c28b;
-      color: white;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+
+.link {
+  text-decoration: none;
+  color: var(--text-soft);
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.link:hover {
+  color: var(--primary);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.logout,
+.loginButton {
+  padding: 8px 16px;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout:hover,
+.loginButton:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(83, 194, 139, 0.2);
+}
+
+.settingsIcon {
+  color: var(--text-soft);
+  transition: all 0.3s ease;
+}
+
+.settingsIcon:hover {
+  color: var(--primary);
+  transform: rotate(45deg);
+}
+
+@media screen and (max-width: 768px) {
+  .links {
+    gap: 15px;
+  }
+
+  .link {
+    font-size: 13px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
 }

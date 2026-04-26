@@ -1,43 +1,105 @@
-.container {}
+.container {
+  padding: 40px 0;
+}
 
 .catTitle {
-      color: #53c28b;
+  font-size: 44px;
+  font-weight: 800;
+  margin-bottom: 60px;
+  background: linear-gradient(135deg, #53c28b 0%, #3a8d65 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: capitalize;
+  letter-spacing: -1px;
 }
 
 .item {
-      display: flex;
-      gap: 50px;
-      margin-top: 50px;
-      margin-bottom: 100px;
+  display: flex;
+  gap: 40px;
+  margin-bottom: 80px;
 }
 
-.item:nth-child(2n+1) {
-      flex-direction: row-reverse;
-}
-
-.imgContainer {
-      flex: 0.6;
-      height: 430px;
-      position: relative;
-}
-
-.img {
-      /* object-fit: cover; */
-
+.item:nth-child(even) {
+  flex-direction: row-reverse;
 }
 
 .content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      justify-content: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.item:nth-child(even) .content {
+  animation: slideInRight 0.6s ease-out;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 .title {
-      font-size: 50px;
+  font-size: 28px;
+  font-weight: 800;
+  color: #eee;
+  letter-spacing: -0.5px;
 }
 
 .desc {
-      font-size: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #888;
+  text-align: justify;
+}
+
+.imgContainer {
+  flex: 1;
+  height: 350px;
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
+}
+
+.img {
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.imgContainer:hover .img {
+  transform: scale(1.1);
+}
+
+/* Light Theme Support */
+:global(.light) .title {
+  color: #111;
+}
+
+:global(.light) .desc {
+  color: #555;
+}
+
+@media screen and (max-width: 1024px) {
+  .item, .item:nth-child(even) {
+    flex-direction: column-reverse;
+    gap: 40px;
+    margin-bottom: 100px;
+  }
+  
+  .imgContainer {
+    height: 350px;
+  }
+  
+  .title {
+    font-size: 36px;
+  }
 }

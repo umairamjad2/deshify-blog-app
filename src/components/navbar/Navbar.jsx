@@ -40,6 +40,22 @@ const links = [
 
 const Navbar = () => {
   const session = useSession();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // During SSR and the first client-side render, we render a stable version 
+  // of the links to avoid hydration mismatch.
+  const filteredLinks = !mounted 
+    ? links.filter(link => link.title !== "Dashboard" && link.title !== "Blog")
+    : links.filter((link) => {
+        if (session.status !== "authenticated") {
+          return link.title !== "Dashboard" && link.title !== "Blog";
+        }
+        return true;
+      });
 
   return (
     <div className={styles.container}>
@@ -48,17 +64,29 @@ const Navbar = () => {
       </Link>
       <div className={styles.links}>
         <DarkModeToggle />
-        {links.map((link) => (
+        {filteredLinks.map((link) => (
           <Link key={link.id} href={link.url} className={styles.link}>
             {link.title}
           </Link>
         ))}
-        {session.status === "authenticated" && (
-          <button className={styles.logout} onClick={signOut}>
-            Logout
-          </button>
+        {mounted && (
+          session.status === "authenticated" ? (
+            <button className={styles.logout} onClick={signOut}>
+              Logout
+            </button>
+          ) : (
+            session.status === "unauthenticated" && (
+              <>
+                <Link href="/dashboard/login" className={styles.link}>
+                  Login
+                </Link>
+                <Link href="/dashboard/register" className={styles.loginButton}>
+                  Sign Up
+                </Link>
+              </>
+            )
+          )
         )}
-
       </div>
     </div>
   );

@@ -30,7 +30,9 @@ export default function RootLayout({ children }) {
           <AuthProvider>
             <div className="container">
               <Navbar />
-              {children}
+              <main style={{ flex: 1 }}>
+                {children}
+              </main>
               <Footer />
             </div>
           </AuthProvider>
