@@ -13,8 +13,9 @@ const Login = () => {
   const [success, setSuccess] = useState("");
 
   useEffect(() => {
-    setSuccess(params.get("success"));
-  }, [params]);
+    if (!params) return;
+    setSuccess(params.get("success") || "");
+  }, []);
 
   useEffect(() => {
     if (session.status === "authenticated") {
@@ -45,7 +46,7 @@ const Login = () => {
         <h2 className={styles.subtitle}>Log in to continue your creative journey.</h2>
 
         {success && <div className={styles.success}>{success}</div>}
-        
+
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.inputGroup}>
             <input
@@ -63,9 +64,9 @@ const Login = () => {
               required
             />
           </div>
-          
+
           <button className={styles.button}>Login</button>
-          
+
           {error && <div className={styles.error}>{error}</div>}
         </form>
 
