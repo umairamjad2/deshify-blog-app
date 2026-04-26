@@ -4,7 +4,10 @@ import React from "react";
 import styles from "./page.module.css";
 
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/posts", {
+  // const res = await fetch("http://localhost:3000/api/posts", {
+  //   cache: "no-store",
+  // });
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts`, {
     cache: "no-store",
   });
 
@@ -23,7 +26,11 @@ const Blog = async () => {
       <div className={styles.posts}>
         {data.length > 0 ? (
           data.map((item) => (
-            <Link href={`/blog/${item._id}`} className={styles.container} key={item._id}>
+            <Link
+              href={`/blog/${item._id}`}
+              className={styles.container}
+              key={item._id}
+            >
               <div className={styles.imgContainer}>
                 <Image
                   className={styles.img}
