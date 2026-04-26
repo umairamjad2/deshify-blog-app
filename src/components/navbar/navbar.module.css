@@ -161,8 +161,7 @@
   width: 75vw;
   max-width: 320px;
   height: 100dvh;
-  background: #d8d6d6;
-  /* background: #111111; */
+  background: #f8f9fa; /* Default light */
   z-index: 1050;
   flex-direction: column;
   padding: 90px 28px 40px;
@@ -174,9 +173,15 @@
   overflow-y: auto;
 }
 
+:global(.dark) .mobileMenu {
+  background: #111111;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 :global(.light) .mobileMenu {
   background: #ffffff;
   box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .mobileMenuOpen {
